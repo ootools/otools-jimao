@@ -1,6 +1,6 @@
 # 几猫港区 · 国产3A大作（OTools 独立插件）
 
-把一份微信收到的**单文件 HTML 3D 第一人称射击游戏**封装成 OTools 独立插件。默认以 `panel` 模式打开，面板加大到 **1440 × 810**，方便运行游戏。
+把一份微信收到的**单文件 HTML 3D 第一人称射击游戏**封装成 OTools 独立插件。默认以 `tabs` 模式（标签页）打开，占据整块标签页区域运行游戏，画面最大。
 
 ## 这是什么
 
@@ -18,23 +18,17 @@
 - **设置**：画质（低/中/高/极高 + 自动）、鼠标灵敏度、反转垂直视角、音量、视野范围 FOV、全屏。设置存 `localStorage['saltline.settings.v1']`。
 - **调试参数**：`?bench` 性能面板 · `?autostart=1` 跳过主菜单与过场 · `?noaudio=1` 关音频 · `?q=low|medium|high|ultra` 指定画质 · `?seed=N` 固定随机种子。
 
-## panel 尺寸
+## 打开方式：tabs（标签页）
 
 `plugin.json` 配置：
 
 ```json
-"openMode": "panel",
-"panelWidth": 1440,
-"panelHeight": 810
+"openMode": "tabs"
 ```
 
-比此前的工具类插件（980 × 700）大一圈。宿主 `src-tauri/src/platform/panel/core.rs` 会按光标所在显示器钳制内容尺寸：
+以标签页形式打开，插件占据宿主一整块标签页区域，画面比 `panel` 面板更大、更接近全屏，最适合运行 3D 游戏。游戏画布是 `position: fixed; inset: 0`，会自适应任意尺寸。若想更沉浸，可在游戏设置里点「进入全屏」（取决于 webview 是否授予 Fullscreen API）。
 
-- 宽度 ≤ 显示器逻辑宽度 × `0.92`
-- 高度 ≤ 显示器逻辑高度 × `PANEL_MAX_HEIGHT_RATIO = 0.7`
-- 下限 320 × 200
-
-例如 1920 × 1080 无缩放的屏幕上，实际约 **1440 × 756**。游戏画布是 `position: fixed; inset: 0`，会自适应任意比例，不受影响。若想更沉浸，可在游戏设置里点「进入全屏」（取决于 webview 是否授予 Fullscreen API）。
+> 早期版本（v1.0.0）曾用 `panel` 模式 + 1440 × 810 加大面板；v1.0.1 起改为 `tabs`，游戏运行体验更好。
 
 ## 数据与隐私
 
@@ -75,7 +69,7 @@
 
 ```
 otools-jimao/
-├─ plugin.json                    openMode=panel / 1440×810 / v1.0.0
+├─ plugin.json                    openMode=tabs / v1.0.1
 ├─ logo.svg
 ├─ README.md
 ├─ web/index.html                 游戏单文件（原 HTML + 宿主桥标记）
@@ -153,8 +147,7 @@ kill "$CHR" "$SRV"
 
 ## 已知限制
 
-- panel 高度受宿主「70% 屏高」硬限制；超高分辨率或高 DPI 缩放下实际高度会小于 810。
-- `ESC` 可能被宿主用于关闭面板，与游戏内暂停冲突；建议点击面板外部关闭，或先在游戏内暂停。
+- `tabs` 模式下插件占据整块标签页，画面最大；若宿主用 `ESC` 关闭标签页，会与游戏内暂停冲突，建议先在游戏内暂停再关闭。
 - 部分 webview 可能不授予 Pointer Lock，游戏会自动降级为拖拽视角（操作说明里已有提示）。
 - 无 GPU 的软件渲染环境帧率很低，属环境限制，不是插件问题。
 
@@ -162,7 +155,7 @@ kill "$CHR" "$SRV"
 
 - **GitHub 仓库**：`https://github.com/ootools/otools-jimao`（public，`main`，作为 `xyito` 子模块挂载于 `otools/otools-jimao`）
 - **Release**：`https://github.com/ootools/otools-jimao/releases/tag/plugin-otools-jimao-v1.0.0`
-- **插件市场**：已上架 OTools 插件市场（latest 列表可见 `otools-jimao` v1.0.0「几猫港区 · 国产3A大作」）
+- **插件市场**：已上架 OTools 插件市场（latest 列表可见 `otools-jimao` v1.0.1「几猫港区 · 国产3A大作」，默认 `tabs` 全屏打开）
 - `build-plugin.yml` 每次 push `main` 自动跑通；`release-plugin.yml` 已成功发布一次（GitHub Release + 市场提交）。
 
 ## 本次未执行

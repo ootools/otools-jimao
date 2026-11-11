@@ -23,12 +23,10 @@
     "fps"
   ],
   "openInBrowser": false,
-  "openMode": "panel",
+  "openMode": "tabs",
   "packid": "otools-jimao",
-  "panelHeight": 810,
-  "panelWidth": 1440,
   "screenshots": [],
-  "summary": "「几猫港区」单文件 3D 第一人称射击游戏（开发体验版）的 OTools 插件封装。切断堆场、仓库、码头三处中继后撤离，含主菜单、行动简报、画质/灵敏度/FOV 设置、键鼠与触屏及手柄操作。整个游戏内联于单个 HTML（three.js 已打包在内），无需联网、无外部资源，默认以 1440×810 的加大 panel 面板打开，方便运行。",
+  "summary": "「几猫港区」单文件 3D 第一人称射击游戏（开发体验版）的 OTools 插件封装。切断堆场、仓库、码头三处中继后撤离，含主菜单、行动简报、画质/灵敏度/FOV 设置、键鼠与触屏及手柄操作。整个游戏内联于单个 HTML（three.js 已打包在内），无需联网、无外部资源，默认以标签页（tabs）全屏打开，方便运行。",
   "uuid": "otools-jimao",
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
