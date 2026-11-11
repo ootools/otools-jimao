@@ -158,7 +158,13 @@ kill "$CHR" "$SRV"
 - 部分 webview 可能不授予 Pointer Lock，游戏会自动降级为拖拽视角（操作说明里已有提示）。
 - 无 GPU 的软件渲染环境帧率很低，属环境限制，不是插件问题。
 
+## 发布状态（v1.0.0）
+
+- **GitHub 仓库**：`https://github.com/ootools/otools-jimao`（public，`main`，作为 `xyito` 子模块挂载于 `otools/otools-jimao`）
+- **Release**：`https://github.com/ootools/otools-jimao/releases/tag/plugin-otools-jimao-v1.0.0`
+- **插件市场**：已上架 OTools 插件市场（latest 列表可见 `otools-jimao` v1.0.0「几猫港区 · 国产3A大作」）
+- `build-plugin.yml` 每次 push `main` 自动跑通；`release-plugin.yml` 已成功发布一次（GitHub Release + 市场提交）。
+
 ## 本次未执行
 
-- 未运行 `deploy-to-otools.ps1`（会写入 OTools 主仓库，需手动确认）。
-- 未创建 GitHub 仓库、未加入 xyito 子模块、未发布插件市场 —— 本次只完成本地插件封装与发布包。
+- 未运行 `deploy-to-otools.ps1`（会写入 OTools 主仓库，需手动确认）。直接安装 `.oplg` 或在市场里搜索「几猫港区」即可使用。
