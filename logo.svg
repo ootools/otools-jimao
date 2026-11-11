@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="几猫港区">
+  <defs>
+    <linearGradient id="harbor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#20272c"/>
+      <stop offset="1" stop-color="#0b0d0f"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#harbor)"/>
+  <!-- 港区集装箱天际线 -->
+  <path d="M8 43h11v8H8zM21 38h10v13H21zM33 41h9v10h-9zM44 36h12v15H44z" fill="#8d9aa3" opacity="0.35"/>
+  <path d="M8 43h48" stroke="#e8e4da" stroke-width="1.4" opacity="0.55"/>
+  <!-- 几猫的耳朵 -->
+  <path d="M20 26l3-11 9 7zM44 26l-3-11-9 7z" fill="#ffb347"/>
+  <!-- 猫脸 -->
+  <path d="M20 26c0-7 5-12 12-12s12 5 12 12v8c0 7-5 11-12 11s-12-4-12-11z" fill="#e8e4da"/>
+  <!-- 准星：眼睛与十字 -->
+  <circle cx="27" cy="28" r="2.4" fill="#0b0d0f"/>
+  <circle cx="37" cy="28" r="2.4" fill="#0b0d0f"/>
+  <path d="M32 19v6M32 34v6M23 28h5M36 28h5" stroke="#d2622a" stroke-width="1.7" stroke-linecap="round"/>
+  <circle cx="32" cy="30" r="1.5" fill="#d2622a"/>
+  <path d="M29 36q3 2.4 6 0" stroke="#0b0d0f" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+</svg>

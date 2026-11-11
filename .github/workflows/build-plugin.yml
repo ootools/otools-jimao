@@ -1,0 +1,42 @@
+# 构建：web/ → dist/（纯静态拷贝），再打包并校验 .oplg。
+# 触发：push 到 main、PR、手动。
+name: build-plugin
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: 构建 dist/
+        run: node scripts/build-web.mjs
+
+      - name: 打包 .oplg
+        shell: bash
+        run: |
+          VERSION=$(node -p "require('./plugin.json').version")
+          node scripts/pack-plugin.mjs --out dist-pack --version "$VERSION"
+
+      - name: 校验 .oplg
+        run: node scripts/verify-plugin.mjs dist-pack
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: plugin-dist
+          path: |
+            dist/
+            dist-pack/*.oplg
+            dist-pack/SHA256SUMS
+          if-no-files-found: error
+          retention-days: 14
